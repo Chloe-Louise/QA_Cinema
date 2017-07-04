@@ -1,0 +1,153 @@
+import javax.swing.*;
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+
+public class cinemaSystem {
+    public static void main(String[] args) {
+        System.out.println("Welcome to QA Cinemas, How many tickets would you like to purchase?");
+    }
+}
+
+abstract class ticket {
+    public static void main(String[] args) {
+        // 1) select ticket type
+        // 2) select amount
+        // 3) print out
+        System.out.print("Please select Ticket Type");
+    }
+}
+
+class standard extends ticket {
+     String type;
+   double price;
+    Scanner keyboard = new Scanner(System.in);
+
+    void charactertistics() {
+        System.out.println("Type of Ticket:" + type);
+        System.out.println("Price of the Ticket:" + price);
+
+    }
+}
+
+    class oap extends ticket {
+        String type;
+        double price;
+
+        void characteristics() {
+            System.out.println("Type of the Ticket:" + type);
+            System.out.println("Price of the Ticket:" + price);
+        }
+    }
+
+    class student extends ticket {
+        String type;
+        double price;
+
+        void characteristics() {
+            System.out.println("Type of the Ticket:" + type);
+            System.out.println("Price of the Ticket:" + price);
+        }
+    }
+
+    class child extends ticket {
+        private String type;
+        private double price;
+
+        private void characteristics() {
+
+        }
+
+        {
+            System.out.println("Type of the Ticket:" + type);
+            System.out.println("Price of the Ticket:" + price);
+
+            standard ticket1 = new standard();
+            ticket1.type = "Standard";
+            ticket1.price = 8.00;
+            ticket1.charactertistics();
+            oap ticket2 = new oap();
+            ticket2.type = "Oap";
+            ticket2.price = 6.00;
+            ticket2.characteristics();
+            student ticket3 = new student();
+            ticket3.type = "Student";
+            ticket3.price = 6.00;
+            ticket3.characteristics();
+            child ticket4 = new child();
+            ticket4.type = "Child";
+            ticket4.price = 6.00;
+            ticket4.characteristics();
+        }
+    }
+
+        class ticketSale {
+            public static void main(String[] args) {
+
+                String inputStr;
+                String outputStr;
+                double standardTicketPrice;
+                double oapTicketPrice;
+                double studentTicketPrice;
+                double childTicketPrice;
+                int noOfStandardTicketsSold;
+                int noOfOapTicketsSold;
+                int noOfStudentTicketsSold;
+                int noOfChildTicketsSold;
+                int totalTicketsSold;
+                int totalDiscount;
+                int discount;
+                String daysOfTheWeek;
+                double totalSale;
+                double finalSale;
+
+                DecimalFormat twoDigits = new DecimalFormat("0.00");
+
+                standardTicketPrice = 8.00;
+
+                oapTicketPrice = 6.00;
+
+
+                studentTicketPrice = 6.00;
+
+
+                childTicketPrice = 4.00;
+
+                inputStr = JOptionPane.showInputDialog("Enter number of standard tickets sold");
+                noOfStandardTicketsSold = Integer.parseInt(inputStr);
+
+                inputStr = JOptionPane.showInputDialog("Enter number of oap tickets sold");
+                noOfOapTicketsSold = Integer.parseInt(inputStr);
+
+                inputStr = JOptionPane.showInputDialog("Enter number of student tickets sold");
+                noOfStudentTicketsSold = Integer.parseInt(inputStr);
+
+                inputStr = JOptionPane.showInputDialog("Enter number of child tickets sold");
+                noOfChildTicketsSold = Integer.parseInt(inputStr);
+
+
+                totalTicketsSold = noOfChildTicketsSold + noOfOapTicketsSold + noOfStandardTicketsSold + noOfStudentTicketsSold;
+                totalSale = standardTicketPrice * noOfStandardTicketsSold + oapTicketPrice * noOfOapTicketsSold + studentTicketPrice * noOfStudentTicketsSold + childTicketPrice * noOfChildTicketsSold;
+
+
+                String [] choices = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+                daysOfTheWeek = (String) JOptionPane.showInputDialog(null,"What Day is it?","", JOptionPane.QUESTION_MESSAGE, null, choices, choices[1]);
+                {
+                    if (daysOfTheWeek == "Wednesday") {
+                        discount = 2;
+                    } else {
+                        discount = 0;
+                    }
+                    totalDiscount = totalTicketsSold * discount;
+                    finalSale = totalSale - (double) totalDiscount;
+                    outputStr =  "Standard Tickets Sold: " + (noOfStandardTicketsSold + "\n"
+                            + "OAP Tickets Sold: " + (noOfOapTicketsSold)+ "\n"
+                            + "Student Tickets Sold: " + (noOfStudentTicketsSold)+ "\n"
+                            + "Child Tickets Sold: " + noOfChildTicketsSold) + "\n"
+                             + "Standard Price: £" + twoDigits.format(totalSale) + "\n"
+                            + "Discount: £"+ twoDigits.format(totalDiscount) + "\n"
+                            + "Discounted Price: £" + twoDigits.format(finalSale) + "\n";
+
+
+                    JOptionPane.showMessageDialog(null, outputStr);                }
+            }}
